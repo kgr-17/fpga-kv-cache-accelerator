@@ -1,4 +1,4 @@
-# basys3.xdc — pin constraints for kv_top on Digilent Basys 3
+# pin + timing constraints for kv_top — Artix-7 XC7A35T (Digilent Basys 3 board)
 # (Artix-7 xc7a35tcpg236-1). All I/O banks are 3.3 V.
 
 ## 100 MHz system clock

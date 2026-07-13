@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export a real distilgpt2 KV-cache slice to .npz for the Basys 3 optimizer.
+"""Export a real distilgpt2 KV-cache slice to .npz for the Artix-7 accelerator.
 
 Runs one forward pass with the KV cache and attention weights enabled, takes
 layer L / head H of the K or V cache -> a (T, 64) float slice, quantizes it
@@ -40,13 +40,12 @@ kept because the model reads them constantly. Second, the cached vectors
 themselves are smooth and highly redundant, so cheap tricks like quantization
 to eight bits, delta encoding between neighboring values, and run-length coding
 of the resulting zeros can shrink what remains without touching the model at
-all. The combination of eviction and lightweight compression composes
-multiplicatively, which is why even a toy hardware accelerator can demonstrate
-a meaningful reduction. The experiment here is deliberately small: one head of
-one layer of a distilled GPT-2, a few hundred tokens, an importance score per
-token, and a byte-exact pipeline that a student FPGA board can execute in
-microseconds. The point is not scale but fidelity: the bytes that come back
-from the board must match the reference model exactly, bit for bit.
+all. Eviction and lightweight compression compose multiplicatively, so a
+compact hardware accelerator delivers a meaningful reduction. Each exported
+slice is one (layer, head) K or V tensor of a distilled GPT-2 with a per-token
+importance score, fed through a byte-exact pipeline the FPGA executes in
+microseconds. The emphasis is fidelity: the bytes returned from the board must
+match the reference model exactly, bit for bit.
 """.strip()
 
 

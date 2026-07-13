@@ -1,4 +1,4 @@
-"""Golden reference model for the Basys 3 toy KV-cache optimizer.
+"""Golden reference model for the Artix-7 KV-cache optimization accelerator.
 
 Byte-exact implementation of docs/encoding.md and docs/protocol.md.
 Hardware (RTL) and this file must never diverge: every testbench stimulus and

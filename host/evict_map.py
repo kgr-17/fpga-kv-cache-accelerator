@@ -1,4 +1,4 @@
-"""Layer x head evictability map, measured on the Basys 3.
+"""Layer x head evictability map, measured on the Artix-7 accelerator.
 
 One distilgpt2 forward pass yields the K tensors and attention maps for all
 6 layers x 12 heads. Each head's slice is quantized and importance-scored
@@ -91,7 +91,7 @@ def main():
     if args.port:
         from kv_host import SerialLink
         link = SerialLink.open(args.port, args.baud, timeout=2.0)
-        source = f"Basys 3 hardware ({args.port})"
+        source = f"Artix-7 hardware ({args.port})"
     print(f"measurement source: {source}")
 
     slices, n_layers, n_heads = extract_all(args.model, args.ctx)

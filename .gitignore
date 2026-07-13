@@ -41,3 +41,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 scratchpad/
+
+# Presentation text dump (build byproduct)
+docs/deck_text.txt

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Host-side CLI for the Basys 3 toy KV-cache optimizer.
+"""Host-side CLI for the Artix-7 KV-cache optimization accelerator.
 
 Speaks docs/protocol.md over pyserial. All framing / encoding / verification
 logic is reused from golden.py (the byte-exact reference model) so the CLI can
@@ -469,7 +469,7 @@ def main(argv=None):
     link_sub = link_parent(True)
 
     ap = argparse.ArgumentParser(
-        description="Host CLI for the Basys 3 KV-cache optimizer",
+        description="Host CLI for the Artix-7 KV-cache optimization accelerator",
         parents=[link_parent(False)])
     sub = ap.add_subparsers(dest="command", required=True)
 

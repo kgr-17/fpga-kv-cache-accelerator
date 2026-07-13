@@ -1,4 +1,4 @@
-// seg7_driver: 16-bit binary value -> 4 decimal digits on the Basys 3 7-segment display.
+// seg7_driver: 16-bit binary value -> 4 decimal digits on the on-board 7-segment display.
 // Combinational double-dabble (value only changes on run boundaries, so the long
 // combinational chain is registered once and is not timing-critical).
 // Saturates display at 9999. Segments and anodes are active-low.

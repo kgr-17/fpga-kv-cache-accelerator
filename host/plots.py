@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Matplotlib figures for the Basys 3 KV-cache optimizer. Each subcommand
+"""Matplotlib figures for the Artix-7 KV-cache optimization accelerator. Each subcommand
 saves one .png:
 
   sweep      --csv sweep.csv  --out sweep.png       ratio + entries_kept vs threshold

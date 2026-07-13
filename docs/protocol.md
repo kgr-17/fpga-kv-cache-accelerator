@@ -4,7 +4,7 @@ Version 1.0.
 
 ## Physical layer
 
-- 8N1 (8 data bits, no parity, 1 stop bit), no flow control (Basys 3 FT2232HQ has no
+- 8N1 (8 data bits, no parity, 1 stop bit), no flow control (the FT2232HQ USB-serial bridge has no
   RTS/CTS wired to the FPGA).
 - Baud plan at 100 MHz fabric clock (`CLKS_PER_BIT` is a synthesis parameter):
   - bring-up: **921,600** -> `CLKS_PER_BIT = 109` (-0.45% FPGA; FTDI +0.16%; safe)

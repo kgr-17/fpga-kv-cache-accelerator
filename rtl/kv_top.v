@@ -1,5 +1,5 @@
 `timescale 1ns/1ps
-// kv_top.v — top level of the KV-cache optimizer demo (Digilent Basys 3).
+// kv_top.v — top level of the KV-cache optimization accelerator (Artix-7 XC7A35T).
 // Wires uart_rx/uart_tx <-> proto_ctrl <-> {slice_mem, out_mem} and the
 // compression pipeline engine_ctrl -> delta_enc -> rle_enc -> vec_buffer,
 // plus stats_regs, ratio_calc, seg7_driver and io_sync.
