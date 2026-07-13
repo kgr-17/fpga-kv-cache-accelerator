@@ -1,0 +1,25 @@
+=== KV-cache optimizer ¡ª energy / throughput figures of merit ===
+clock                 : 100 MHz
+process time / slice  : 0.269 ms (26941 cycles)
+
+power (vectorless, Low confidence):
+  total on-chip       : 156 mW
+  dynamic             : 83 mW
+  static (chip idle)  : 73 mW
+
+throughput (engine, PROCESS phase):
+  system (orig bytes) : 95.5 MB/s
+  engine (kept bytes) : 19.2 MB/s
+
+energy per byte:
+  per orig byte  (total pwr) : 1.63 nJ/byte
+  per kept byte  (total pwr) : 8.11 nJ/byte
+  per orig byte  (dyn only)  : 0.87 nJ/byte
+  per kept byte  (dyn only)  : 4.31 nJ/byte
+
+throughput per watt (system):
+  total power         : 0.61 GB/s/W  (4.9 Gbps/W)
+  dynamic power        : 1.15 GB/s/W  (9.2 Gbps/W)
+
+note: static power is the fixed cost of a mostly-empty 20k-LUT chip;
+the dynamic figures better reflect the engine's own cost.

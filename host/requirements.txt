@@ -1,0 +1,7 @@
+# Host-side dependencies for the Basys 3 KV-cache optimizer (Python 3.9+).
+# golden.py and make_vectors.py are pure stdlib and need none of these.
+pyserial>=3.5          # kv_host.py UART link
+numpy>=1.21            # npz slices (kv_host.py, export_kv.py, plots.py)
+matplotlib>=3.5        # plots.py
+torch>=1.13            # export_kv.py (CPU build is sufficient)
+transformers>=4.30     # export_kv.py distilgpt2 model + tokenizer

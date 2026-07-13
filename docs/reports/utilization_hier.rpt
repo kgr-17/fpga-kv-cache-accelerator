@@ -1,0 +1,41 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
+| Date         : Sat Jul 11 18:42:17 2026
+| Host         : WinsonLiu running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file C:/kv_cache/docs/reports/utilization_hier.rpt
+| Design       : kv_top
+| Device       : xc7a35tcpg236-1
+| Speed File   : -1
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------+--------------+------------+------------+---------+------+------+--------+--------+------------+
+|       Instance       |    Module    | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++----------------------+--------------+------------+------------+---------+------+------+--------+--------+------------+
+| kv_top               |        (top) |       2148 |       2123 |      24 |    1 | 2174 |     24 |      1 |          2 |
+|   (kv_top)           |        (top) |          6 |          5 |       0 |    1 |   63 |      0 |      0 |          0 |
+|   u_engine_ctrl      |  engine_ctrl |        826 |        826 |       0 |    0 |  677 |      0 |      0 |          0 |
+|     (u_engine_ctrl)  |  engine_ctrl |        822 |        822 |       0 |    0 |  677 |      0 |      0 |          0 |
+|   u_proto_ctrl       |   proto_ctrl |        438 |        438 |       0 |    0 |  286 |      0 |      0 |          2 |
+|   u_ratio_calc       |   ratio_calc |         77 |         77 |       0 |    0 |  148 |      0 |      0 |          0 |
+|   u_restore_ctrl     | restore_ctrl |        353 |        353 |       0 |    0 |  642 |      0 |      0 |          0 |
+|     (u_restore_ctrl) | restore_ctrl |        302 |        302 |       0 |    0 |  616 |      0 |      0 |          0 |
+|     u_rle_dec        |      rle_dec |         50 |         50 |       0 |    0 |   18 |      0 |      0 |          0 |
+|   u_stats_regs       |   stats_regs |        203 |        203 |       0 |    0 |  128 |      0 |      0 |          0 |
+|   u_uart_rx          |      uart_rx |         65 |         65 |       0 |    0 |   43 |      0 |      0 |          0 |
+|   u_uart_tx          |      uart_tx |         50 |         50 |       0 |    0 |   30 |      0 |      0 |          0 |
+|   u_vec_buffer       |   vec_buffer |         53 |         29 |      24 |    0 |   16 |      0 |      0 |          0 |
++----------------------+--------------+------------+------------+---------+------+------+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

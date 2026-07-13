@@ -1,0 +1,43 @@
+# Vivado project / build artifacts (regenerable from sources)
+kv_cache.runs/
+kv_cache.cache/
+kv_cache.hw/
+kv_cache.ip_user_files/
+kv_cache.sim/
+*.jou
+*.log
+.Xil/
+vivado*.str
+usage_statistics_webtalk.*
+
+# Bitstreams and large binaries (build outputs)
+docs/bitstreams/
+*.bit
+*.ltx
+*.dcp
+
+# Simulation working dirs / outputs
+sim/work/
+xsim.dir/
+*.wdb
+*.pb
+webtalk*.jou
+
+# Presentation binary (results live in README + docs)
+docs/*.pptx
+
+# Vivado project descriptor + stray runtime files (machine-specific)
+kv_cache.xpr
+dfx_runtime.txt
+
+# Result CSVs live organized under docs/reports/ (root copies are regenerated)
+/sweep.csv
+/ppl.csv
+/evict_map.csv
+
+# Python / OS
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+scratchpad/
