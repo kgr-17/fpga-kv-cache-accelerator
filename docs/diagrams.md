@@ -1,6 +1,6 @@
 # Architecture & Flow Diagrams
 
-Scope: a **toy / prototype memory-side FPGA pipeline**. The FPGA does **not** run the LLM —
+Scope: a **memory-side FPGA prototype pipeline**. The FPGA does **not** run the LLM —
 the PC runs distilgpt2 and exports quantized KV-cache slices; the FPGA prunes, compresses,
 and restores them. The hero diagram is [`architecture.svg`](architecture.svg); the Mermaid
 sources below render natively on GitHub and paste into slides via
@@ -26,7 +26,7 @@ flowchart LR
     direction TB
     U1["LOAD"] --> U2["RUN"] --> U3["GET_STATS / GET_DATA / GET_RESTORED"]
   end
-  subgraph FPGA["Basys 3 FPGA · Artix-7 · 100 MHz"]
+  subgraph FPGA["FPGA · Artix-7 XC7A35T · 100 MHz"]
     direction TB
     F1["input slice BRAM"] --> F2["eviction + compression pipeline"]
     F2 --> F3["output BRAM"]

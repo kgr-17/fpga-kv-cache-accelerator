@@ -8,7 +8,7 @@
   <rect width="1200" height="700" fill="#ffffff"/>
 
   <!-- title + scope -->
-  <text x="600" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#1f2328">End-to-End Toy KV-Cache Optimizer on Basys 3</text>
+  <text x="600" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#1f2328">End-to-End KV-Cache Optimizer &#8212; Artix-7 Prototype</text>
   <text x="600" y="70" text-anchor="middle" font-size="13" fill="#656d76">Memory-side FPGA prototype &#8212; the FPGA does not run the LLM. It prunes, compresses, and restores KV-cache slices exported from distilgpt2.</text>
 
   <!-- legend -->
@@ -63,7 +63,7 @@
 
   <!-- ============================ RIGHT: FPGA ============================ -->
   <rect x="760" y="112" width="400" height="378" rx="12" fill="#eaf5ec" stroke="#1a7f37" stroke-width="1.5"/>
-  <text x="780" y="138" font-size="15" font-weight="700" fill="#0f5323">Basys 3 FPGA &#183; Artix-7 &#183; 100 MHz</text>
+  <text x="780" y="138" font-size="15" font-weight="700" fill="#0f5323">FPGA &#183; Artix-7 XC7A35T &#183; 100 MHz</text>
   <g fill="#ffffff" stroke="#1a7f37" stroke-width="1.1">
     <rect x="778" y="150" width="364" height="34" rx="7"/>
     <rect x="778" y="192" width="364" height="34" rx="7"/>
