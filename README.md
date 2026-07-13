@@ -41,23 +41,19 @@ a Python reference implementation, on **real quantized distilgpt2 KV-cache tenso
 ## Architecture
 
 Store-and-forward datapath (load → process → drain), single 100 MHz clock domain,
-**18 Verilog RTL modules**, no vendor IP (all memories inferred):
+**18 Verilog RTL modules**, no vendor IP (all memories inferred). The FPGA does **not**
+run the LLM — the PC exports quantized KV-cache slices; the FPGA prunes, compresses, and
+restores them.
 
-```
- Host (Python)                     FPGA fabric (Verilog RTL)
- ─────────────                     ─────────────────────────
- score tokens by                   ┌─ evict  (importance ≥ threshold)
- attention importance    ───▶      ├─ delta encode
- quantize to INT8                  ├─ zero-run RLE
- frame + checksum                  ├─ bypass  (send raw if incompressible)
-                                   └─ store + stats (compression ratio, cycles)
- verify every byte       ◀───      hardware decompressor:  RLE⁻¹ → delta⁻¹  (restore on demand)
- against golden model
-```
+![End-to-end architecture: PC host, UART protocol, FPGA pipeline, and results](docs/architecture.svg)
 
 The forward pipeline (`evict → delta_enc → rle_enc → bypass`) and its **inverse**
 (`rle_dec → delta_dec`) are both in RTL, so the board is a complete round-trip
 memory node: store compressed, restore losslessly.
+
+> Detailed flow diagrams — **FPGA internal pipeline**, **verification flow**, and
+> **evaluation/results flow** — are in [`docs/diagrams.md`](docs/diagrams.md) (Mermaid,
+> rendered inline on GitHub).
 
 ## Results
 

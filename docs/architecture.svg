@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="700" fill="#ffffff"/>
+
+  <!-- title + scope -->
+  <text x="600" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#1f2328">End-to-End Toy KV-Cache Optimizer on Basys 3</text>
+  <text x="600" y="70" text-anchor="middle" font-size="13" fill="#656d76">Memory-side FPGA prototype &#8212; the FPGA does not run the LLM. It prunes, compresses, and restores KV-cache slices exported from distilgpt2.</text>
+
+  <!-- legend -->
+  <g font-size="11" fill="#656d76">
+    <circle cx="384" cy="90" r="5" fill="#1f6feb"/><text x="394" y="94">PC / software</text>
+    <circle cx="492" cy="90" r="5" fill="#8250df"/><text x="502" y="94">UART / protocol</text>
+    <circle cx="626" cy="90" r="5" fill="#1a7f37"/><text x="636" y="94">FPGA hardware</text>
+    <circle cx="742" cy="90" r="5" fill="#bc4c00"/><text x="752" y="94">results</text>
+  </g>
+
+  <!-- ============================ LEFT: PC / Python host ============================ -->
+  <rect x="40" y="112" width="320" height="378" rx="12" fill="#eef4fe" stroke="#1f6feb" stroke-width="1.5"/>
+  <text x="60" y="138" font-size="15" font-weight="700" fill="#0a3069">PC &#183; Python Host</text>
+  <g fill="#ffffff" stroke="#1f6feb" stroke-width="1.1">
+    <rect x="58" y="150" width="284" height="42" rx="8"/>
+    <rect x="58" y="218" width="284" height="42" rx="8"/>
+    <rect x="58" y="286" width="284" height="42" rx="8"/>
+    <rect x="58" y="354" width="284" height="42" rx="8"/>
+    <rect x="58" y="422" width="284" height="42" rx="8"/>
+  </g>
+  <g font-size="13" fill="#1f2328">
+    <text x="74" y="176">distilgpt2 inference</text>
+    <text x="74" y="244">KV-cache slice export</text>
+    <text x="74" y="312">attention importance scoring</text>
+    <text x="74" y="380">FP16 &#8594; INT8 quantization</text>
+    <text x="74" y="448">Python golden model</text>
+  </g>
+  <g font-size="10.5" fill="#57606a">
+    <text x="230" y="176">runs on PC</text>
+    <text x="270" y="244">K / V tensor</text>
+    <text x="255" y="312">H2O attention</text>
+    <text x="300" y="448">reference</text>
+  </g>
+
+  <!-- ============================ MIDDLE: UART protocol ============================ -->
+  <rect x="420" y="112" width="280" height="378" rx="12" fill="#f5f0fd" stroke="#8250df" stroke-width="1.5"/>
+  <text x="440" y="138" font-size="15" font-weight="700" fill="#512a8b">UART &#183; framed protocol</text>
+  <g fill="#ffffff" stroke="#8250df" stroke-width="1.1">
+    <rect x="438" y="150" width="244" height="42" rx="8"/>
+    <rect x="438" y="212" width="244" height="42" rx="8"/>
+    <rect x="438" y="274" width="244" height="42" rx="8"/>
+    <rect x="438" y="336" width="244" height="42" rx="8"/>
+  </g>
+  <g font-size="13" fill="#1f2328">
+    <text x="454" y="176">LOAD &#8212; slice &#8594; BRAM</text>
+    <text x="454" y="238">RUN &#8212; evict + compress</text>
+    <text x="454" y="300">GET_STATS / GET_DATA</text>
+    <text x="454" y="362">GET_RESTORED &#8212; restore</text>
+  </g>
+  <text x="454" y="410" font-size="11" fill="#57606a">921,600 baud &#183; 8N1 &#183; checksum</text>
+  <text x="454" y="428" font-size="11" fill="#57606a">optional 2,000,000 baud build</text>
+
+  <!-- ============================ RIGHT: FPGA ============================ -->
+  <rect x="760" y="112" width="400" height="378" rx="12" fill="#eaf5ec" stroke="#1a7f37" stroke-width="1.5"/>
+  <text x="780" y="138" font-size="15" font-weight="700" fill="#0f5323">Basys 3 FPGA &#183; Artix-7 &#183; 100 MHz</text>
+  <g fill="#ffffff" stroke="#1a7f37" stroke-width="1.1">
+    <rect x="778" y="150" width="364" height="34" rx="7"/>
+    <rect x="778" y="192" width="364" height="34" rx="7"/>
+    <rect x="778" y="234" width="364" height="34" rx="7"/>
+    <rect x="778" y="276" width="364" height="34" rx="7"/>
+    <rect x="778" y="318" width="364" height="34" rx="7"/>
+    <rect x="778" y="360" width="364" height="34" rx="7"/>
+  </g>
+  <!-- restore + stats blocks tinted to set them apart -->
+  <rect x="778" y="402" width="364" height="34" rx="7" fill="#dcefe1" stroke="#1a7f37" stroke-width="1.1"/>
+  <rect x="778" y="444" width="364" height="34" rx="7" fill="#f3faf5" stroke="#1a7f37" stroke-width="1.1"/>
+  <g font-size="12.5" fill="#1f2328">
+    <text x="792" y="171">input slice BRAM &#183; 512 entries</text>
+    <text x="792" y="213">eviction filter &#183; importance &#8805; threshold</text>
+    <text x="792" y="255">delta encoder</text>
+    <text x="792" y="297">zero-run RLE encoder</text>
+    <text x="792" y="339">bypass &#183; raw if compressed &#8805; raw</text>
+    <text x="792" y="381">output BRAM &#183; compressed stream</text>
+    <text x="792" y="423">hardware decompressor &#183; RLE&#8315;&#185; &#8594; delta&#8315;&#185;</text>
+    <text x="792" y="465">stats counters &#183; ratio &#183; cycles &#183; kept</text>
+  </g>
+  <!-- compress-flow chevrons -->
+  <g fill="#8c959f">
+    <path d="M955,185.5 L965,185.5 L960,190.5 Z"/>
+    <path d="M955,227.5 L965,227.5 L960,232.5 Z"/>
+    <path d="M955,269.5 L965,269.5 L960,274.5 Z"/>
+    <path d="M955,311.5 L965,311.5 L960,316.5 Z"/>
+    <path d="M955,353.5 L965,353.5 L960,358.5 Z"/>
+  </g>
+
+  <!-- ============================ inter-column arrows ============================ -->
+  <g stroke="#57606a" stroke-width="1.6">
+    <line x1="362" y1="252" x2="416" y2="252" marker-end="url(#ah)"/>   <!-- PC -> UART forward -->
+    <line x1="418" y1="330" x2="364" y2="330" marker-end="url(#ah)"/>   <!-- UART -> PC return -->
+    <line x1="702" y1="252" x2="756" y2="252" marker-end="url(#ah)"/>   <!-- UART -> FPGA forward -->
+    <line x1="758" y1="330" x2="704" y2="330" marker-end="url(#ah)"/>   <!-- FPGA -> UART return -->
+  </g>
+  <g font-size="10" fill="#57606a" text-anchor="middle">
+    <text x="389" y="244">load &#183; run</text>
+    <text x="389" y="344">responses</text>
+    <text x="729" y="244">stream</text>
+    <text x="729" y="344">restored / data</text>
+  </g>
+
+  <!-- down arrow to results -->
+  <line x1="600" y1="494" x2="600" y2="508" stroke="#57606a" stroke-width="1.6" marker-end="url(#ah)"/>
+
+  <!-- ============================ BOTTOM: verification &amp; results ============================ -->
+  <rect x="40" y="510" width="1120" height="150" rx="12" fill="#fdf0e6" stroke="#bc4c00" stroke-width="1.5"/>
+  <text x="64" y="538" font-size="15" font-weight="700" fill="#7a3200">Verification &amp; Results</text>
+  <g fill="#ffffff" stroke="#bc4c00" stroke-width="1.1">
+    <rect x="62" y="552" width="204" height="52" rx="8"/>
+    <rect x="280" y="552" width="204" height="52" rx="8"/>
+    <rect x="498" y="552" width="204" height="52" rx="8"/>
+    <rect x="716" y="552" width="204" height="52" rx="8"/>
+    <rect x="934" y="552" width="204" height="52" rx="8"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="164" y="574" font-size="13" font-weight="700" fill="#1f2328">8 / 8 testbenches</text>
+    <text x="164" y="592" font-size="11" fill="#57606a">self-checking, PASS</text>
+    <text x="382" y="574" font-size="13" font-weight="700" fill="#1f2328">hardware BIT-EXACT</text>
+    <text x="382" y="592" font-size="11" fill="#57606a">compress + restore</text>
+    <text x="600" y="574" font-size="13" font-weight="700" fill="#1f2328">4.84&#215; @ threshold 3</text>
+    <text x="600" y="592" font-size="11" fill="#57606a">81 / 402 tokens kept</text>
+    <text x="818" y="574" font-size="13" font-weight="700" fill="#1f2328">up to 22.3&#215;</text>
+    <text x="818" y="592" font-size="11" fill="#57606a">at high threshold</text>
+    <text x="1036" y="574" font-size="13" font-weight="700" fill="#1f2328">100 MHz met</text>
+    <text x="1036" y="592" font-size="11" fill="#57606a">~10% LUT &#183; 49% BRAM</text>
+  </g>
+  <text x="64" y="636" font-size="12" fill="#656d76">Finding: delta/RLE add ~0&#215; on real INT8 KV data &#8212; memory savings come from importance-based eviction.&#160;&#160;Quality: H2O + recency &#8776; +11% perplexity at 50% retention.</text>
+</svg>
